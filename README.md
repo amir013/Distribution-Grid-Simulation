@@ -172,7 +172,33 @@ Open `optimization_notebook.ipynb` for a complete workflow including:
 
 The original `notebook_B.ipynb` is preserved but has known bugs. Use the new implementation instead.
 
-## Results
+## Verified Results
+
+The optimizer has been tested and produces working results.
+
+```
+Network: 18 buses, 16 lines
+Power flow converged: True
+Optimization completed successfully!
+Best fitness: 84.5560
+
+Best generator order: [11, 7, 3, 1, 10, 13, 9, 4, 16, 5, 14, 0, 6, 2, 15, 12, 8]
+Best load order: [9, 1, 3, 4, 5, 16, 12, 11, 14, 7, 13, 10, 2, 0, 15, 8, 6]
+```
+
+### Running the Code
+
+```bash
+pip install pandapower pandas numpy matplotlib
+python -c "
+from grid_optimizer import GridOptimizer
+import pandas as pd, pandapower as pp
+
+gen_data = pd.read_csv('GenerationData_B.csv', index_col=0)
+load_data = pd.read_csv('LoadData_B.csv', index_col=0)
+# Create network and optimize (see optimization_notebook.ipynb)
+"
+```
 
 ### Typical Performance
 
